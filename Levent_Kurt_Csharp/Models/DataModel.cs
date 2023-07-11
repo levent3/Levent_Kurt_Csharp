@@ -1,6 +1,10 @@
-﻿namespace Levent_Kurt_Csharp.Models
+﻿using Newtonsoft.Json;
+
+namespace Levent_Kurt_Csharp.Models
 {
-   public class DataModel
+
+	[JsonObject]
+	public class DataModel
     {
 
 

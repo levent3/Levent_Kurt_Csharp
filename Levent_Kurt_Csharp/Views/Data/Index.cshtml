@@ -1,8 +1,120 @@
-﻿@model DataModel
+﻿@model IList<Response>
 
-<h1>Data</h1>
+
+@*<h1>Data</h1>
 <img src="@Model.Data.articles.Response.FirstOrDefault()?.primaryImage" />
-<p>Property 1: @Model.Data.articles.Response.FirstOrDefault()?.Spot</p>
+<p>Property 1: @Model.Data.articles.Response.FirstOrDefault()?.Spot</p>*@
 
 
 
+<section class="main-content-w3layouts-agileits">
+	<div class="container">
+		<h3 class="tittle">Blog Postları</h3>
+		<div class="inner-sec">
+			<!--left-->
+			<div class="left-blog-info-w3layouts-agileits text-left">
+				<div class="d-flex m-5">
+					
+					
+					@foreach(var item in Model.Take(1) )
+					{
+						
+
+
+					
+
+						<div class="col-lg-3 card">
+							<a href="single.html">
+								<img src="@item.primaryImage" class="card-img-top img-fluid" alt="">
+							</a>
+							<div class="card-body m-5">
+								<ul class="blog-icons my-4">
+									<li>
+										<a href="#">
+										<i class="far fa-calendar-alt"></i>  @(((DateTime)(Model.FirstOrDefault()?.CreatedDate).Value).ToString("d"))
+										</a>
+									</li>
+									<li class="mx-2">
+										<a href="#">
+											<i class="far fa-comment"></i> 21
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fas fa-eye"></i> @item.CategoryName
+										</a>
+									</li>
+
+
+								</ul>
+								<h5 class="card-title">
+								<a href="single.html">@Model.FirstOrDefault().Spot.Substring(0,60) ...</a>
+								</h5>
+
+								<h5 class="card-title">
+									<a href="single.html"></a>
+								</h5>
+							<p class="card-text mb-3">@Html.Raw(Model.FirstOrDefault().Description.Substring(0,60)) ... </p>
+								<a asp-action="GetBlogDetails" asp-controller="Blog" asp-route-id="@Model.FirstOrDefault().Id" class="btn btn-primary read-m">Read More</a>
+
+							</div>					
+						</div>
+
+
+						<div class="col-auto card">							
+							<div class="card-body m-5">
+
+								@await Component.InvokeAsync("YanHaber",new{model = @Model})
+								<a asp-action="GetBlogDetails" asp-controller="Blog" asp-route-id="@Model.FirstOrDefault().Id" class="btn btn-primary read-m">Read More</a>
+
+							</div>
+						</div>
+					
+
+
+
+					}
+
+					
+				</div>
+
+				<div>
+
+
+					@await Component.InvokeAsync("Haber",new{model = @Model})
+
+				</div>
+				
+
+
+				<div>
+
+
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-left mt-4">
+							<li class="page-item disabled">
+								<a class="page-link" href="#" tabindex="-1">Previous</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">1</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">2</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">3</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">Next</a>
+							</li>
+						</ul>
+					</nav>
+
+				</div>
+
+
+				<!--//left-->
+			</div>
+		</div>
+	</div>
+</section>

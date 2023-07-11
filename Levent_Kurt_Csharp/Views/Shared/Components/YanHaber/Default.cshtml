@@ -1,0 +1,28 @@
+﻿@model IList<Response>
+
+
+@{
+    Random random = new Random();
+    var randomItems = Model.OrderBy(x => random.Next()).Take(2).ToList();
+
+    }
+
+<div class="col-auto">
+    <h4>Diger Haberler</h4>
+    @foreach (var item in randomItems)
+    {
+
+
+        <a href="single.html">
+            <img src="@item.primaryImage" class="img-fluid" alt="">
+        </a>
+        <h5>
+            <a href="single.html">@item.CategoryName </a>
+        </h5>
+
+
+
+
+    }
+
+</div>
