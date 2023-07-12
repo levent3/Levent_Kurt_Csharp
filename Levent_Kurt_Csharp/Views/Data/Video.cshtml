@@ -1,0 +1,55 @@
+﻿@model IList<Response2>
+
+
+
+
+<h2>Video Haberler </h2>
+
+<video id="my-video" class="video-js" style="border-color:black" controls preload="auto" width="1250" height="500">
+    <source src="@Model.FirstOrDefault().VideoUrl" type="video/mp4">
+    <p class="vjs-no-js">
+        to view this video please enable javascript, and consider upgrading to a web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank">supports html5 video</a>
+    </p>
+</video>
+
+<h2>
+
+    *@Model.FirstOrDefault().Title
+
+
+</h2>
+
+<p>
+
+    @Model.FirstOrDefault().Spot
+</p>
+
+<p style="text-align:right">
+    <i class="far fa-calendar-alt" style="text-align:right"> @(((Model.FirstOrDefault()?.OutputDate)))</i>
+
+</p>
+
+
+
+<div>
+
+
+    @await Component.InvokeAsync("AltVideolar",new{model = @Model})
+
+</div>
+
+
+
+
+
+@section scripts {
+    <link href="/lib/videojs/video-js.min.css" rel="stylesheet" />
+    <script src="/lib/videojs/video.min.js"></script>
+
+    <script>
+        document.addeventlistener('domcontentloaded', function () {
+            var player = videojs('my-video');
+        });
+    </script>
+}

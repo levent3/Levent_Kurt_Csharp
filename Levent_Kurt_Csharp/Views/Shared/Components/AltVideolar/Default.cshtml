@@ -1,0 +1,26 @@
+﻿@model IList<Response2>
+
+
+
+@{
+    Random random = new Random();
+    var randomItems = Model.OrderBy(x => random.Next()).Take(8).ToList();
+
+}
+
+<h2>Video Haberler </h2>
+@foreach(var item in Model)
+{
+
+    <video id="my-video" class="video-js" style="border-color:black" controls preload="auto" width="250" height="250">
+        <source src="@item.VideoUrl" type="video/mp4">
+        <p class="vjs-no-js">
+            to view this video please enable javascript, and consider upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports html5 video</a>
+        </p>
+    </video>
+
+ 
+
+
+}

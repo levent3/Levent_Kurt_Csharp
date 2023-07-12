@@ -1,7 +1,7 @@
 ﻿@model IList<Response>
 
 <div class=" d-flex">
-    <h4>Yazarın Diger Blogları</h4>
+    <h4 style="color:brown">Gündem Haberler</h4>
     @foreach (var item in Model.Skip(Math.Max(0, Model.Count - 4)))
     {
 
@@ -9,8 +9,8 @@
             <a href="single.html">
                 <img src="@item.primaryImage" class="img-fluid" alt="">
             </a>
-            <h5>
-                <a href="single.html">@item.CategoryName </a>
+            <h5 >
+            <a href="single.html" style="color:brown">@item.TitleShort </a>
             </h5>
 
        
